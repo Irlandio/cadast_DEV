@@ -13,5 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'BookController@index');
-//{  return view('index');});
+Route::resource('/books', 'BookController');
+{  return view('index');};

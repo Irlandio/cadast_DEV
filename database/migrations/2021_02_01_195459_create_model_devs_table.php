@@ -14,7 +14,7 @@ class CreateModelDevsTable extends Migration
     public function up()
     {
         Schema::create('candidatos', function (Blueprint $table) {
-            $table->smallIncrements('idDev');
+            $table->id();
             $table->string('nome',50);
             $table->string('email',50); 
             $table->integer('idade');

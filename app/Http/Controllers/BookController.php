@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\DevRequest;
 use App\Models\ModelDev;
 use App\User;
 
@@ -23,7 +23,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $devs=$this->objDev->all();
+        $devs=$this->objDev->paginate(3)->sortby('nome');
         return view('index',compact('devs'));
         
       //  return view('index');//
@@ -38,7 +38,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('add',compact('dev'));
     }
 
     /**
@@ -47,9 +47,28 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(DevRequest $request)
+    {        
+       // echo $request->linkedin; exit;
+        $tecno="";
+       $te =$request->tec;
+        foreach($te as $tecn)
+            { if($tecno!="")$tecno.=",".$tecn; else $tecno.=$tecn; }
+        
+        $add=$this->objDev->create([
+      //  $add=([
+            'nome'          =>$request->nome,
+            'email'         =>$request->email1,
+            'dNasc'         =>$request->datNasc,
+            'Url_linkedin'  =>$request->linkedin,
+            'idade'         =>$request->idade,
+            'tecnologias'   =>$tecno
+        ]);
+       // echo $add; exit;
+        
+        if($add){
+            return redirect('books');
+        }else return redirect('books/create');
     }
 
     /**
@@ -60,7 +79,9 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+      //  $this->objDev=new ModelDev();
+       $dev=$this->objDev->find($id);
+       return view('show',compact('dev'));
     }
 
     /**
@@ -71,7 +92,9 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+       $dev=$this->objDev->find($id);
+       return view('add',compact('dev'));
     }
 
     /**
@@ -81,9 +104,23 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DevRequest $request, $id)
     {
-        //
+         $tecno="";
+       $te =$request->tec;
+        foreach($te as $tecn)
+            { if($tecno!="")$tecno.=",".$tecn; else $tecno.=$tecn; }
+       $edt=$this->objDev->where(['id'=>$id])->update([
+            'nome'          =>$request->nome,
+            'email'         =>$request->email1,
+            'dNasc'         =>$request->datNasc,
+            'Url_linkedin'  =>$request->linkedin,
+            'idade'         =>$request->idade,
+            'tecnologias'   =>$tecno
+        ]);
+        if($edt){
+            return redirect('books');
+        }else return redirect('books/$id/edit');
     }
 
     /**
@@ -93,7 +130,8 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {        
+        $del=$this->objDev->destroy($id);
+        return($del)?"sim":"não";
     }
 }
