@@ -7,13 +7,13 @@ return [
     | Application Name
     |--------------------------------------------------------------------------
     |
-    | This value is the name of your application. This value is used when the
-    | framework needs to place the application's name in a notification or
-    | any other location as required by the application or its packages.
+    | Este valor é o nome do seu aplicativo. Este valor é usado quando o
+    | framework precisa colocar o nome do aplicativo em uma notificação ou
+    | qualquer outro local conforme exigido pelo aplicativo ou seus pacotes.
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'CAD DEV'),
 
     /*
     |--------------------------------------------------------------------------

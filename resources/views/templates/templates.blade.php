@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Cad_DEV</title>
-        <link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap.min.css')}}"
+        <link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap.min.css')}}">
     </head>
     <bode>
-       @yield('content') 
+      <!-- @yield('content') 
        <!-- Modal de Delete-->
 <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
   <div class="modal-dialog" role="document">

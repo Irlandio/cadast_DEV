@@ -11,7 +11,7 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Os atributos que podem ser atribuídos em massa.
      *
      * @var array
      */
@@ -20,7 +20,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * Os atributos que devem ser ocultados para arrays.
      *
      * @var array
      */
@@ -29,7 +29,9 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * Os atributos que devem ser convertidos em tipos nativos
+
+.
      *
      * @var array
      */

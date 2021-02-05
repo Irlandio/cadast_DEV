@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DevRequest;
 use App\Models\ModelDev;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -23,19 +24,36 @@ class BookController extends Controller
      */
     public function index()
     {
-        $devs=$this->objDev->paginate(3)->sortby('nome');
+        if(Auth::check() === true){
+        $devs=$this->objDev->paginate(10)->sortby('nome');
+       // return view('index',compact('devs'));
         return view('index',compact('devs'));
         
       //  return view('index');//
        // dd($this->objUser);    
       //  dd($this->objDev->all());    
-    }
-
+    }else{
+           
+        
+        //$user = $this->objUser=new User();
+       // return view('auth/login',compact('user'));
+          return redirect()->route('login');  
+           
+        }
+    }    
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function login()
+    {
+        $user = $this->objUser=new User();
+        return view('auth/login',compact('user'));
+    }
+    
+    
     public function create()
     {
         return view('add',compact('dev'));
@@ -71,7 +89,14 @@ class BookController extends Controller
         }else return redirect('books/create');
     }
 
-    /**
+    /** 
+    
+        $user = $this->objUser=new User();
+        return view('auth\login',compact('user'));
+        
+    return redirect()->route('login'); 
+            $user = $this->objUser=new User();
+            return view('auth\login',compact('user'));
      * Display the specified resource.
      *
      * @param  int  $id

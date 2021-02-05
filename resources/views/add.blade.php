@@ -1,4 +1,5 @@
-@extends('templates.templates')
+<!--@extends('templates.templates')-->
+@extends('layouts.app')
 
 @section('content')
   

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Broadcast;
 | Broadcast Channels
 |--------------------------------------------------------------------------
 |
-| Here you may register all of the event broadcasting channels that your
+| Aqui você pode cadastrar todos os canais de transmissão de eventos que o seu
 | application supports. The given channel authorization callbacks are
 | used to check if an authenticated user can listen to the channel.
 |

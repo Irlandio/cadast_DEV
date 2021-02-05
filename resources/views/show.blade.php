@@ -1,5 +1,5 @@
-@extends('templates.templates')
-
+<!--@extends('templates.templates')-->
+@extends('layouts.app')
 @section('content')
     <h1 class="text-center">Visualizaro candidato #{{$dev->id}}</h1> <hr>
 
