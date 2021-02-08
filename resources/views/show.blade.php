@@ -1,30 +1,40 @@
 <!--@extends('templates.templates')-->
 @extends('layouts.app')
 @section('content')
-    <h1 class="text-center">Visualizaro candidato #{{$dev->id}}</h1> <hr>
+    <h3 class="text-center">Visualizaro cadastro #{{$dev->id}}</h3> <hr>
 
-    <div class="col-8 m-auto">
+    <div class="col-6 m-auto">
       
-
-        <dl class="dl-horizontal">
-            <dt>Nome:</dt>
-            <dd>{{$dev->nome}}</dd>
-
-            <dt>Idade:</dt>
-            <dd>{{$dev->idade}}</dd>
-
-            <dt>E-mail:</dt>
-            <dd>{{$dev->email}}</dd>
-
-            <dt>Linkedin:</dt>
-            <dd>{{$dev->Url_linkedin}}</dd>	
-        </dl>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td style="text-align: right; width: 20%"><strong> Nome:</strong></td>
+                    <td>{{$dev->nome}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right"><strong> Idade:</strong></td>
+                    <td>{{$dev->idade}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right"><strong> E-mail:</strong></td>
+                    <td>{{$dev->email}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right"><strong> Linkedin:</strong></td>
+                    <td>{{$dev->Url_linkedin}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right"><strong> Tecnologias:</strong></td>
+                    <td>{{$dev->tecnologias}}</td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
     
-<div id="actions" class="row">
-	<div class="col-md-12">
-	  <a href="{{url("books/$dev->id")}}" class="btn btn-primary">Editar</a>
+<div id="actions" class="col-6 m-auto">
+	<div class="col-12 m-auto">
+	  <a href="{{url("books/$dev->id/edit")}}" class="btn btn-primary">Editar</a>
 	  <a href="{{url("books")}}" class="btn btn-dark">Voltar</a>
 	</div>
 </div>

@@ -17,7 +17,7 @@
   </div>
 </div> <!-- /.modal -->
 <!-- Modal de Filtrar-->
-<div class="modal fade" id="filtrar-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+<div class="modal fade" id="filtrar23-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -63,6 +63,40 @@
         style="margin-top:5px;"/> <span class="badge" >&check;</span> Laravel:</label><br/>
   </div> 
   </div> 
+  
+                  
+        <table class="table">
+          <tbody>  
+
+                <tr >
+                     <td>              
+                      <label class="form-check-label" submit>
+                      <input name="tec[]" type="checkbox" value="C#" {{$c}} class="form-check-input" /> C#:</label><br/>
+                       <label class="form-check-label" submit><input name="tec[]" type="checkbox" value="Javascript" 
+                       {{$javascript}} class="form-check-input"/> Javascript:</label><br/>
+                       <label class="form-check-label" submit><input name="tec[]" type="checkbox" value="Nodejs" 
+                        class="form-check-input"/> Nodejs:</label><br/>
+                  </td>
+                  <td>
+                      <label class="form-check-label" submit><input name="tec[]" type="checkbox" value="Angular" 
+                        class="form-check-input"/> Angular:</label><br/>
+                       <label class="form-check-label" submit><input name="tec[]" type="checkbox" value="React" 
+                        class="form-check-input"/> React:</label><br/>
+                       <label class="form-check-label" submit><input name="tec[]" type="checkbox" value="Ionic" 
+                        class="form-check-input"/>  Ionic:</label><br/>
+                 </td>
+                  <td>
+                      <label class="form-check-label" submit><input name="tec[]" type="checkbox" value="Mensageria" 
+                        class="form-check-input"/> Mensageria:</label><br/>
+                       <label class="form-check-label" submit><input name="tec[]" type="checkbox" value="PHP" 
+                        class="form-check-input"/> PHP:</label><br/>
+                       <label class="form-check-label" submit><input name="tec[]" type="checkbox" value="Laravel" 
+                        class="form-check-input"/> Laravel:</label><br/>
+                  </td>
+                </tr>
+          </tbody>
+        </table>  
+
   </div> 
       <div class="modal-footer">
             <div class="form-group col-md-6">
@@ -86,29 +120,29 @@
         if(input.value=="" || input.value==" " || input.value.indexOf(' ')==-1 ){
                 alert( "Por favor, informe seu nome completo!" );
                 document.getElementById("nome").style.background  = "#f0b9b9";
-    }else       document.getElementById("nome").style.background  = "#a7f5bf";
-    }
-    function calculaIdade(dataNasc){
-         var dataAtual = new Date();
-         var anoAtual = dataAtual.getFullYear();
-         var anoNascParts = dataNasc.split('-');
-         var diaNasc =anoNascParts[2];
-         var mesNasc =anoNascParts[1];
-         var anoNasc =anoNascParts[0];
-         var idade = anoAtual - anoNasc;
-         var mesAtual = dataAtual.getMonth() + 1; 
-         //Se mes atual for menor que o nascimento, nao fez aniversario ainda; 
-         if(mesAtual < mesNasc){ idade--; 
-         } else {
-         //Se estiver no mes do nascimento, verificar o dia
-         if(mesAtual == mesNasc){ 
-         if(new Date().getDate() < diaNasc ){ 
-         //Se a data atual for menor que o dia de nascimento ele ainda nao fez aniversario
-         idade--; 
-         }} }
-        if(idade < 105)
-        document.getElementById("idade").value= idade;          
-        // return idade; 
+        }else       document.getElementById("nome").style.background  = "#a7f5bf";
+        }
+        function calculaIdade(dataNasc){
+             var dataAtual = new Date();
+             var anoAtual = dataAtual.getFullYear();
+             var anoNascParts = dataNasc.split('-');
+             var diaNasc =anoNascParts[2];
+             var mesNasc =anoNascParts[1];
+             var anoNasc =anoNascParts[0];
+             var idade = anoAtual - anoNasc;
+             var mesAtual = dataAtual.getMonth() + 1; 
+             //Se mes atual for menor que o nascimento, nao fez aniversario ainda; 
+             if(mesAtual < mesNasc){ idade--; 
+             } else {
+             //Se estiver no mes do nascimento, verificar o dia
+             if(mesAtual == mesNasc){ 
+             if(new Date().getDate() < diaNasc ){ 
+             //Se a data atual for menor que o dia de nascimento ele ainda nao fez aniversario
+             idade--; 
+             }} }
+            if(idade < 105)
+            document.getElementById("idade").value= idade;          
+            // return idade; 
         }
     
     function verificaemail(input,campo){
@@ -131,4 +165,5 @@
               }
         }
     </script>
+    
     

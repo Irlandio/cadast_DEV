@@ -1,0 +1,18 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\Http",
+    "\\app\\Http\\Controllers",
+    "\\app\\Http\\Controllers\\Auth",
+    "\\app\\Models",
+    "\\resources",
+    "\\resources\\views",
+    "\\routes",
+    "\\tests",
+    "\\tests\\Feature",
+    "\\tests\\Unit"
+  ],
+  "SelectedNode": "\\tests\\Unit\\unidadeTest.php",
+  "PreviewInSolutionExplorer": false
+}

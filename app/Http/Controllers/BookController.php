@@ -6,6 +6,8 @@ use App\Http\Requests\DevRequest;
 use App\Models\ModelDev;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Concerns;
+use Session;
 
 class BookController extends Controller
 {
@@ -25,20 +27,11 @@ class BookController extends Controller
     public function index()
     {
         if(Auth::check() === true){
-        $devs=$this->objDev->paginate(10)->sortby('nome');
-       // return view('index',compact('devs'));
+        $devs=$this->objDev->paginate(25)->sortby('id');
         return view('index',compact('devs'));
         
-      //  return view('index');//
-       // dd($this->objUser);    
-      //  dd($this->objDev->all());    
-    }else{
-           
-        
-        //$user = $this->objUser=new User();
-       // return view('auth/login',compact('user'));
-          return redirect()->route('login');  
-           
+    }else{        
+          return redirect()->route('login');           
         }
     }    
     /**
@@ -51,8 +44,7 @@ class BookController extends Controller
     {
         $user = $this->objUser=new User();
         return view('auth/login',compact('user'));
-    }
-    
+    }    
     
     public function create()
     {
@@ -67,14 +59,12 @@ class BookController extends Controller
      */
     public function store(DevRequest $request)
     {        
-       // echo $request->linkedin; exit;
         $tecno="";
        $te =$request->tec;
         foreach($te as $tecn)
             { if($tecno!="")$tecno.=",".$tecn; else $tecno.=$tecn; }
         
         $add=$this->objDev->create([
-      //  $add=([
             'nome'          =>$request->nome,
             'email'         =>$request->email1,
             'dNasc'         =>$request->datNasc,
@@ -82,21 +72,18 @@ class BookController extends Controller
             'idade'         =>$request->idade,
             'tecnologias'   =>$tecno
         ]);
-       // echo $add; exit;
         
-        if($add){
+        if($add){ 
+            Session::flash('message', 'Incerssão bem sucedida! '.$request->nome.', '.$request->idade.' anos, '.$request->email1.', ('.$tecno.')'); 
+            Session::flash('alert-class', 'alert-success'); 
             return redirect('books');
-        }else return redirect('books/create');
+        }else  { 
+            Session::flash('message', 'Falha na Incerssão de '.$request->nome. '. Nada foi alterado!'); 
+              Session::flash('alert-class', 'alert-danger'); 
+            return redirect('books/create');
+        }
     }
-
-    /** 
-    
-        $user = $this->objUser=new User();
-        return view('auth\login',compact('user'));
-        
-    return redirect()->route('login'); 
-            $user = $this->objUser=new User();
-            return view('auth\login',compact('user'));
+/*
      * Display the specified resource.
      *
      * @param  int  $id
@@ -104,7 +91,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-      //  $this->objDev=new ModelDev();
+        
        $dev=$this->objDev->find($id);
        return view('show',compact('dev'));
     }
@@ -135,6 +122,7 @@ class BookController extends Controller
        $te =$request->tec;
         foreach($te as $tecn)
             { if($tecno!="")$tecno.=",".$tecn; else $tecno.=$tecn; }
+        
        $edt=$this->objDev->where(['id'=>$id])->update([
             'nome'          =>$request->nome,
             'email'         =>$request->email1,
@@ -143,11 +131,16 @@ class BookController extends Controller
             'idade'         =>$request->idade,
             'tecnologias'   =>$tecno
         ]);
-        if($edt){
-            return redirect('books');
-        }else return redirect('books/$id/edit');
+        if($edt){ 
+            Session::flash('message', 'Atualização bem sucedida! '.$request->nome.', '.$request->idade.' anos, '.$request->email1.', ('.$tecno.')'); 
+            Session::flash('alert-class', 'alert-success'); 
+             return redirect('books'); 
+        }else {   
+            Session::flash('message', 'Falha na Atualização de '.$request->nome. '. Nada foi alterado!'); 
+              Session::flash('alert-class', 'alert-danger'); 
+            return redirect('books/$id/edit');
     }
-
+}
     /**
      * Remove the specified resource from storage.
      *
