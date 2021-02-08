@@ -108,12 +108,6 @@
     </div>
   </div>
 </div> <!-- /.modal -->
-
-<style>
-.badgebox{ opacity: 0;}.badgebox + .badge{text-indent: -999999px;width: 27px;}
-.badgebox:focus + .badge{ box-shadow: inset 0px 0px 5px;}
-.badgebox:checked + .badge{text-indent: 0;}
-</style>
     <!-- Adicionando Javascript -->
     <script>
     function verificanome(input){

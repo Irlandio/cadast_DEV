@@ -2,21 +2,44 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="col-12 m-auto">
-    <div class="col-12 m-auto">
-        <div class="col-2 m-auto">
-            <H4 class="text-center">Relação de Candidatos</H4>
-        </div>
-        <div class="col-4 m-auto">
-            <a class="btn btn-success" 
-            href="{{url("candidato/create")}}"><i class="fa fa-plus"></i> Novo Cadastro</a>
-            
-            <a class="btn btn-primary" href="{{url("candidato")}}"><i class="fa fa-refresh"></i> Atualizar</a>
-            
-        
-        <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#filtrar-modal" data-id="id"  data-nome="Teste" ><i class="fa fa-filter"></i> Filtrar</a>
-        </div>
+    <div class="col-8 m-auto">
+        <table class="table"><tbody>      
+                <tr><td>
+                    <a class="btn btn-success" href="{{url("candidato/create")}}"> <i class="fa fa-plus"></i> Novo Cadastro</a>
+                  </td><td>
+                    <H4 class="text-center">Relação de Candidatos</H4>
+                  </td><td>
+                    <a class="btn btn-primary" href="{{url("candidato")}}"><i class="fa fa-refresh"></i> Atualizar</a>
+                  </td>
+                </tr>
+          </tbody></table>
     </div>
+    
+<div class="col-12 m-auto">
+    
+        <div class="col-6  m-auto">
+        <form name="formSearch" id="formSearch" method="post" action="{{route("candidato.search")}}" class="form form-inline" >
+     @csrf
+                <div class="form-group col-12">
+                  
+                      <button type="submit" id="salvar"    class="btn btn-primary"><i class="fa fa-filter"></i> Filtrar por:</button>
+              <select class="sform-control" id="filter" name="filter">
+                <option value = "Javascript">Javascript</option>
+                <option value = "Nodejs">    Nodejs</option>		
+                <option value = "Angular">   Angular</option>		
+                <option value = "React"  >   React</option>
+                <option value = "Ionic"  >   Ionic</option>	
+                <option value = "Mensageria">Mensageria</option>	
+                <option value = "PHP"    >   PHP</option>	
+                <option value = "Ionic"  >   Ionic</option>	
+                <option value = "Laravel">   Laravel</option>	
+              </select>
+                </div>  
+         </form>
+        </div>
+
+        </div>
+    
     @if(Session::has('message'))
     <div class="col-8 m-auto">
         <h5 class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</h5>
@@ -61,67 +84,7 @@
               @endforeach
           </tbody>
         </table>
-    @{{$devs->links()}}
 </div>
 
 
-<!-- Modal de Filtrar-->
-<div class="modal fade" id="filtrar-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="modalLabel">Filtrar Cadastros</h4>
-      </div>
-      <div class="modal-body">
-        Selecione as tecnologias a serem filtradas.
-      </div>      
-<form action="index.php"  name="NForm"  method="get" >
-    <div class="form-group col-md-6">
-           <select name="ord" id="ord" class="form-control">
-                <option value="id"> Por Cadastro</option>
-                <option value="nome"> Por Nome</option>
-                <option value="tecnologias"> Por Tecnologias</option>
-                </select> 
-    </div>
-  <div class="row" >  
-    <div class="form-group col-md-12">
-      <label for="campo3"> Tecnologias</label><br/>
-    <div class="form-group col-md-4">
-       <label class="btn btn-default" submit><input name="tec[]" type="checkbox" value="C#" class="badgebox" 
-        style="margin-top:5px;"/> <span class="badge" >&check;</span> C#:</label><br/>
-       <label class="btn btn-default" submit><input name="tec[]" type="checkbox" value="Javascript" class="badgebox" 
-        style="margin-top:5px;"/> <span class="badge" >&check;</span> Javascript:</label><br/>
-       <label class="btn btn-default" submit><input name="tec[]" type="checkbox" value="Nodejs" class="badgebox" 
-        style="margin-top:5px;"/> <span class="badge" >&check;</span> Nodejs:</label><br/>
-    </div> 
-    <div class="form-group col-md-3">
-       <label class="btn btn-default" submit><input name="tec[]" type="checkbox" value="Angular" class="badgebox" 
-        style="margin-top:5px;"/> <span class="badge" >&check;</span> Angular:</label><br/>
-       <label class="btn btn-default" submit><input name="tec[]" type="checkbox" value="React" class="badgebox" 
-       style="margin-top:5px;"/> <span class="badge" >&check;</span> React:</label><br/>
-       <label class="btn btn-default" submit><input name="tec[]" type="checkbox" value="Ionic" class="badgebox" 
-        style="margin-top:5px;"/> <span class="badge" >&check;</span> Ionic:</label><br/>
-    </div> 
-    <div class="form-group col-md-4">
-       <label class="btn btn-default" submit><input name="tec[]" type="checkbox" value="Mensageria" class="badgebox" 
-        style="margin-top:5px;"/> <span class="badge" >&check;</span> Mensageria:</label><br/>
-       <label class="btn btn-default" submit><input name="tec[]" type="checkbox" value="PHP" class="badgebox" 
-        style="margin-top:5px;"/> <span class="badge" >&check;</span> PHP:</label><br/>
-       <label class="btn btn-default" submit><input name="tec[]" type="checkbox" value="Laravel" class="badgebox" 
-        style="margin-top:5px;"/> <span class="badge" >&check;</span> Laravel:</label><br/>
-  </div> 
-  </div> 
-  </div> 
-      <div class="modal-footer">
-            <div class="form-group col-md-6">
-                   <button type="submit" class="btn btn-primary">Filtrar</button>
-                    <a id="cancel" class="btn btn-default" data-dismiss="modal">Cancelar</a>
-                </div>
-      </div>
-</form>
-    </div>
-  </div>
-</div> 
-    
 @endsection

@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/candidato', 'CandidatoController');
 Route::get('/candidato', 'CandidatoController@index')->name('candidato');
-Route::get('/', 'InicioController@redirecionar')->name('inicio');
 
+Route::any('/candidato/search', 'CandidatoController@search')->name('candidato.search');
+
+Route::get('/', 'InicioController@redirecionar')->name('inicio');
 
 Auth::routes();
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\DevRequest;
+use App\Http\Requests\CandidatoRequest;
 use App\Models\ModelCandidato;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -33,13 +33,16 @@ class CandidatoController extends Controller
     }else{        
           return redirect()->route('login');           
         }
-    }    
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
+    }
+    public function search(CandidatoRequest $request)
+    {   
+        $devs = $this->objDev->search($request->$filter);
+        dd($devs->all());exit;
+        
+        return view('index',compact('devs'));
+        
+        
+    }  
     public function login()
     {
         $user = $this->objUser=new User();
@@ -51,13 +54,7 @@ class CandidatoController extends Controller
         return view('add',compact('dev'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(DevRequest $request)
+    public function store(CandidatoRequest $request)
     {        
         $tecno="";
        $te =$request->tec;
@@ -83,12 +80,6 @@ class CandidatoController extends Controller
             return redirect('candidato/create');
         }
     }
-/*
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         
@@ -96,12 +87,6 @@ class CandidatoController extends Controller
        return view('show',compact('dev'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         
@@ -109,14 +94,7 @@ class CandidatoController extends Controller
        return view('add',compact('dev'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(DevRequest $request, $id)
+    public function update(CandidatoRequest $request, $id)
     {
          $tecno="";
        $te =$request->tec;
@@ -141,12 +119,6 @@ class CandidatoController extends Controller
             return redirect('candidato/$id/edit');
     }
 }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {        
         $del=$this->objDev->destroy($id);
