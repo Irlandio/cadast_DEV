@@ -9,9 +9,9 @@
         </div>
         <div class="col-4 m-auto">
             <a class="btn btn-success" 
-            href="{{url("books/create")}}"><i class="fa fa-plus"></i> Novo Cadastro</a>
+            href="{{url("candidato/create")}}"><i class="fa fa-plus"></i> Novo Cadastro</a>
             
-            <a class="btn btn-primary" href="{{url("books")}}"><i class="fa fa-refresh"></i> Atualizar</a>
+            <a class="btn btn-primary" href="{{url("candidato")}}"><i class="fa fa-refresh"></i> Atualizar</a>
             
         
         <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#filtrar-modal" data-id="id"  data-nome="Teste" ><i class="fa fa-filter"></i> Filtrar</a>
@@ -44,15 +44,15 @@
                   <td>{{$dv->tecnologias}}</td>
                   <td>{{$dv->idade}}</td>
                   <td>
-                      <a href="{{url("books/$dv->id")}}">
+                      <a href="{{url("candidato/$dv->id")}}">
                             <button class="btn btn-dark"> Visualizar</button>
                         </a>             
 
-                      <a href="{{url("books/$dv->id/edit")}}">
+                      <a href="{{url("candidato/$dv->id/edit")}}">
                             <button class="btn btn-primary"> Editar</button>
                         </a>
 
-                      <a href="{{url("books/$dv->id")}}" class="js-del"  data-id="{{$dv->id}}"  data-nome="{{$dv->nome}}">
+                      <a href="{{url("candidato/$dv->id")}}" class="js-del"  data-id="{{$dv->id}}"  data-nome="{{$dv->nome}}">
                         <button class="btn btn-danger"> Excluir</button>
                     </a>
 

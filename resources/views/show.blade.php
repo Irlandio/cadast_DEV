@@ -34,8 +34,8 @@
     
 <div id="actions" class="col-6 m-auto">
 	<div class="col-12 m-auto">
-	  <a href="{{url("books/$dev->id/edit")}}" class="btn btn-primary">Editar</a>
-	  <a href="{{url("books")}}" class="btn btn-dark">Voltar</a>
+	  <a href="{{url("candidato/$dev->id/edit")}}" class="btn btn-primary">Editar</a>
+	  <a href="{{url("candidato")}}" class="btn btn-dark">Voltar</a>
 	</div>
 </div>
 @endsection

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'CAD DEV'),
+    'name' => env('APP_NAME', 'Cadastro de Candidatos'),
 
     /*
     |--------------------------------------------------------------------------

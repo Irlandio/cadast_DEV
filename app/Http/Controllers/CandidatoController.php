@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DevRequest;
-use App\Models\ModelDev;
+use App\Models\ModelCandidato;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Concerns;
 use Session;
 
-class BookController extends Controller
+class CandidatoController extends Controller
 {
     private $objDev;
     private $objUser;
     
     public function __construct()
     {
-        $this->objDev=new ModelDev();
+        $this->objDev=new ModelCandidato();
         $this->objUser=new User();
     }
     /**
@@ -76,11 +76,11 @@ class BookController extends Controller
         if($add){ 
             Session::flash('message', 'Incerssão bem sucedida! '.$request->nome.', '.$request->idade.' anos, '.$request->email1.', ('.$tecno.')'); 
             Session::flash('alert-class', 'alert-success'); 
-            return redirect('books');
+            return redirect('candidato');
         }else  { 
             Session::flash('message', 'Falha na Incerssão de '.$request->nome. '. Nada foi alterado!'); 
               Session::flash('alert-class', 'alert-danger'); 
-            return redirect('books/create');
+            return redirect('candidato/create');
         }
     }
 /*
@@ -134,11 +134,11 @@ class BookController extends Controller
         if($edt){ 
             Session::flash('message', 'Atualização bem sucedida! '.$request->nome.', '.$request->idade.' anos, '.$request->email1.', ('.$tecno.')'); 
             Session::flash('alert-class', 'alert-success'); 
-             return redirect('books'); 
+             return redirect('candidato'); 
         }else {   
             Session::flash('message', 'Falha na Atualização de '.$request->nome. '. Nada foi alterado!'); 
               Session::flash('alert-class', 'alert-danger'); 
-            return redirect('books/$id/edit');
+            return redirect('candidato/$id/edit');
     }
 }
     /**

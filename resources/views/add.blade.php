@@ -16,9 +16,9 @@
     <div class="col-8 m-auto">
     @if(isset($dev))
         
-    <form name="formEdit" id="formEdit" method="post" action="{{url("books/$dev->id")}}" > @method('PUT')
+    <form name="formEdit" id="formEdit" method="post" action="{{url("candidato/$dev->id")}}" > @method('PUT')
     @else 
-    <form name="formAdd" id="formAdd" method="post" action="{{url("books")}}"  >
+    <form name="formAdd" id="formAdd" method="post" action="{{url("candidato")}}"  >
     @endif
      @csrf
        
@@ -125,7 +125,7 @@
       <div id="actions" class="col-4  m-auto">
         <div class="col-md-12">
           <button type="submit" id="salvar"    class="btn btn-primary">@if(isset($dev))Alterar @else Salvar @endif</button>
-          <a href="{{url("books")}}" class="btn btn-dark">Voltar</a>
+          <a href="{{url("candidato")}}" class="btn btn-dark">Voltar</a>
         </div>
       </div>     
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\DevRequest;
+use App\Http\Requests\CandidatoRequest;
 use App\Models\ModelDev;
 use App\User;
 

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\ModelDev;
+use App\Models\ModelCandidato;
 
 class DevSeeder extends Seeder
 {
@@ -10,7 +10,7 @@ class DevSeeder extends Seeder
      *
      * @return void
      */
-    public function run(ModelDev $dev)
+    public function run(ModelCandidato $dev)
     {
         
         $dev->create([

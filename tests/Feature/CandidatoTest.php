@@ -15,17 +15,17 @@ class ExampleTest extends TestCase
      */
     public function test_given_user_not_loggedin_when_access_restritec_page_then_redirect_login()
     {
-        $response = $this->get('/books')
+        $response = $this->get('/candidato')
          ->assertRedirect('/login');
 
     }
     public function test_campos_obrigatorios()
     {
        $user = factory(User::class)->create();        
-        $response = $this->actingAs($user)->get('/books');
+        $response = $this->actingAs($user)->get('/candidato');
         $token = session('_token');
         $response = $this->actingAs($user)->withSession(['banned' => false])
-                         ->post('/books', ['_token' => $token,]);       
+                         ->post('/candidato', ['_token' => $token,]);       
         $response->assertSessionHasErrors([
 		'nome','email1','linkedin','datNasc'
 	   ]);
@@ -33,11 +33,11 @@ class ExampleTest extends TestCase
     public function test_cadastro_sucesso()
     {
        $user = factory(User::class)->create();
-        $response = $this->actingAs($user)->get('/books');
+        $response = $this->actingAs($user)->get('/candidato');
         $token = session('_token');
         
         $response = $this->actingAs($user)->withSession(['banned' => false])
-                         ->post('/books', ['_token' => $token,
+                         ->post('/candidato', ['_token' => $token,
                                             'nome'=>'Marlon Costa',
                                             'email1'=>'mac@gmail.com',
                                             'linkedin'=>'www.linkedin/in/Marl-Costa/4578554',

@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 
 */
 
-//Route::resource('/books', 'BookController');
-Route::resource('/books', 'BookController');
-Route::get('/books', 'BookController@index')->name('books');
+
+Route::resource('/candidato', 'CandidatoController');
+Route::get('/candidato', 'CandidatoController@index')->name('candidato');
 Route::get('/', 'InicioController@redirecionar')->name('inicio');
 
 
